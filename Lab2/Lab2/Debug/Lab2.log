@@ -1,0 +1,8 @@
+﻿  Experiment.cpp
+D:\Program\C\Theory of disign experement\Lab2\Lab2\Experiment.h(115,10): warning C4101: 'properResult': unreferenced local variable
+  Main.cpp
+D:\Program\C\Theory of disign experement\Lab2\Lab2\Experiment.h(115,10): warning C4101: 'properResult': unreferenced local variable
+  Generating Code...
+D:\Program\C\Theory of disign experement\Lab2\Lab2\Experiment.h(166): warning C4715: 'Experiment::binirySearchCol': not all control paths return a value
+D:\Program\C\Theory of disign experement\Lab2\Lab2\Experiment.h(155): warning C4172: returning address of local variable or temporary: point
+  Lab2.vcxproj -> D:\Program\C\Theory of disign experement\Lab2\Debug\Lab2.exe

@@ -1,0 +1,5 @@
+﻿  Experement.cpp
+  Main.cpp
+  Generating Code...
+D:\Program\C\Theory of disign experement\Lab3\Lab3\Math.h(74): warning C4715: 'Math::koharenaMeasure': not all control paths return a value
+  Lab3.vcxproj -> D:\Program\C\Theory of disign experement\Lab3\Debug\Lab3.exe
