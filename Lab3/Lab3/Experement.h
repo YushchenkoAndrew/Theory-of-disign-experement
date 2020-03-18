@@ -28,6 +28,8 @@ class Experement
 
 		double b[4];
 
+		int mExp = 3;
+
 		double Y[4][3];
 
 		double Ymin = 192.34;
@@ -55,13 +57,16 @@ class Experement
 			for (int i = 0; i < 4; i++) {
 				my[i] = 0;
 				printf("|%4d\t%4d\t%4d\t|", Xplan[i][0], Xplan[i][1], Xplan[i][2]);
-				for (int j = 0; j < 3; j++) {
+				for (int j = 0; j < mExp; j++) {
 					Y[i][j] = (rand() % int(Ymax - Ymin)) + Ymin;
 
 					printf("%10.3f", Y[i][j]);
 
+					my[i] += double(Y[i][j]) / mExp;
+				}
+
+				for (int j = 0; j < 3; j++) {
 					mx[j] += double(Xplan[i][j]) / 4;
-					my[i] += double(Y[i][j]) / 3;
 				}
 				printf("\t|");
 				drawLine();
@@ -139,10 +144,10 @@ class Experement
 
 			printf("\n");
 
-			double dispertion[4] = { math.calcDispertion(Y[0], my[0], 3),
-			math.calcDispertion(Y[1], my[1], 3),
-			math.calcDispertion(Y[2], my[2], 3),
-			math.calcDispertion(Y[3], my[3], 3) };
+			double dispertion[4] = { math.calcDispertion(Y[0], my[0], mExp),
+			math.calcDispertion(Y[1], my[1], mExp),
+			math.calcDispertion(Y[2], my[2], mExp),
+			math.calcDispertion(Y[3], my[3], mExp) };
 
 			double totalDispartion = 0;
 			double maxDisapertion = INT_MIN;
@@ -157,6 +162,11 @@ class Experement
 			printf("Gp = %5.3f\n", maxDisapertion / totalDispartion);
 			printf("Gt = %5.3f\n\n", math.koharenaMeasure(f1, f2));
 
+			if (maxDisapertion / totalDispartion > math.koharenaMeasure(f1, f2)) {
+				mExp++;
+				calcAndPrintResult();
+			}
+
 			double beta[4] = { math.findCoeficentStudentsa(new int[4]{1, 1, 1, 1}, my, 4),
 			math.findCoeficentStudentsa(new int[4]{-1, -1, 1, 1}, my, 4),
 			math.findCoeficentStudentsa(new int[4]{-1, 1, -1, 1}, my, 4),
@@ -169,7 +179,7 @@ class Experement
 
 			printf("Studentsa Measure:\n");
 			for (int i = 0; i < 4; i++) {
-				t[i] = beta[i] / sqrt(totalDispartion / (4 * 4 * 3)) * (beta[i] < 0 ? (-1) : 1);
+				t[i] = beta[i] / sqrt(totalDispartion / (4 * 4 * mExp)) * (beta[i] < 0 ? (-1) : 1);
 				
 				printf("t%d = %8.3f\n", i, t[i]); 
 				for (int j = 0; j < 4; j++) {
@@ -184,11 +194,11 @@ class Experement
 			printf("Fishera Measure:\n");
 
 
-			printf("Sad = %8.3f\n", math.findCoeficentFishera(yPract, my, 4) * 3 / 2);
+			printf("Sad = %8.3f\n", math.findCoeficentFishera(yPract, my, 4) * mExp / 2);
 
-			printf("Fp = %8.3f\n", (math.findCoeficentFishera(yPract, my, 4) * 3 / 2) / ( totalDispartion / (4 * 4 * 3)));
+			printf("Fp = %8.3f\n", (math.findCoeficentFishera(yPract, my, 4) * mExp / 2) / ( totalDispartion / (4 * 4 * mExp)));
 			printf("Ft = %8.3f\n", math.fisheraMeasure(8, 2));
-			printf((math.fisheraMeasure(8, 2) < (math.findCoeficentFishera(yPract, my, 4) * 3 / 2) / (totalDispartion / (4 * 4 * 3)) ? "Equation is not edequate" :
+			printf((math.fisheraMeasure(8, 2) < (math.findCoeficentFishera(yPract, my, 4) * mExp / 2) / (totalDispartion / (4 * 4 * mExp)) ? "Equation is not edequate" :
 				"Equation is edequate"));
 
 			printf("\n");
