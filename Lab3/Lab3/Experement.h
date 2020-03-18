@@ -30,7 +30,7 @@ class Experement
 
 		int mExp = 3;
 
-		double Y[4][3];
+		double Y[4][13];
 
 		double Ymin = 192.34;
 		double Ymax = 228.33;
