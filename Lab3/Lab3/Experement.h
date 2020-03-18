@@ -164,6 +164,7 @@ class Experement
 
 			if (maxDisapertion / totalDispartion > math.koharenaMeasure(f1, f2)) {
 				mExp++;
+				printf("Dispartion is not Smooth");
 				calcAndPrintResult();
 			}
 
