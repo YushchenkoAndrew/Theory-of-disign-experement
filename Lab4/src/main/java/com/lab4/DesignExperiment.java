@@ -2,10 +2,13 @@ package main.java.com.lab4;
 
 import article.CorrectionPrint;
 import article.MathPackage.Matrix;
+import main.java.com.lab3.Experiment;
 
 public class DesignExperiment {
     private Matrix matrix = new Matrix();
     private Math math = new Math();
+
+    private Experiment lab3 = new Experiment();
 
     private int m = 3;
     private int N = 8;
@@ -50,6 +53,10 @@ public class DesignExperiment {
     }
 
     public void start() {
+        if (lab3.startExperiment())
+            return;             // Finish!!
+        // else Do algorithm below
+
         fillMatrix_X();
         System.out.println("X:");
         CorrectionPrint.printArray(XPlan);
@@ -199,8 +206,8 @@ public class DesignExperiment {
         System.out.printf("Ft = %8.3f\n", math.fisheraMeasure((m - 1) * N, N - 2));
         if (math.fisheraMeasure((m - 1) * N, N - 2) < (math.findCoefficientFishera(yPractical, temp, N) * m / 2) / (totalDispersion / (N * N * m))) {
             System.out.println("Equation is not Adequacy");
-            // I don't know need I line below like sad in Lab4 or not
-            //start();
+            // Start again
+            start();
         }
         else
             System.out.println("Equation is Adequacy");

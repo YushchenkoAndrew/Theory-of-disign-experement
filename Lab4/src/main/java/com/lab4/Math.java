@@ -60,6 +60,15 @@ public class Math {
         return result;
     }
 
+    public double findDispersion(double[] arr, double midValue, int len) {
+        double result = 0;
+
+        for (int i = 0; i < len; i++) {
+            result += (arr[i] - midValue) * (arr[i] - midValue) / len;
+        }
+        return result;
+    }
+
     public double koharenaMeasure(int f1, int f2) {
         for (int i = 0; i < 11; i++) {
             if (f1 >= koharenaTable[0][i] && f1 < koharenaTable[0][i + 1]) {
@@ -73,7 +82,7 @@ public class Math {
         return 0;
     }
 
-    double findCoeficentStudentsa(int[] x, double[] y, int len) {
+    public double findCoeficentStudentsa(int[] x, double[] y, int len) {
         double result = 0;
         for (int i = 0; i < len; i++) {
             result += x[i] * y[i] / len;
@@ -82,11 +91,11 @@ public class Math {
         return result;
     }
 
-    double studentaMeasure(int f3) {
+    public double studentaMeasure(int f3) {
         return studentaTable[f3 - 1];
     }
 
-    double findCoefficientFishera(double[] x, double[] y, int len) {
+    public double findCoefficientFishera(double[] x, double[] y, int len) {
         double result = 0;
         for (int i = 0; i < len; i++) {
             result += (x[i] - y[i]) * (x[i] - y[i]);
@@ -95,7 +104,7 @@ public class Math {
         return result;
     }
 
-    double fisheraMeasure(int f3, int f4) {
+    public double fisheraMeasure(int f3, int f4) {
         return fisherTable[f3][f4];
     }
 
