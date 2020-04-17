@@ -176,7 +176,7 @@ public class DesignExperiment {
         M[10] = new double[]{getSumX(new int[]{10}),    getSumX(new int[]{10, 1}),getSumX(new int[]{10, 2}),getSumX(new int[]{10, 3}),getSumX(new int[]{10, 4}),getSumX(new int[]{10, 5}),getSumX(new int[]{10, 6}),getSumX(new int[]{10, 7}),getSumX(new int[]{10, 8}),getSumX(new int[]{10, 9}),getSumX(new int[]{10, 10})};
 
 
-        K = new double[11][1];
+        K = new double[11][1];          //  Contain Y * X(i), in matrix performance it's --> M * B = K (A * X = Y (Y = K, X = B, M = A))  
         K[0][0] = getSumY(new int[0]);
         K[1][0] = getSumY(new int[]{1});
         K[2][0] = getSumY(new int[]{2});
